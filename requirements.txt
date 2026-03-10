@@ -1,0 +1,13 @@
+# SciKMS — Scientific Knowledge Management System
+# Cài đặt: pip install -r requirements.txt
+
+# ─── BẮT BUỘC ─────────────────────────────────────────────────────────────────
+streamlit>=1.35.0          # Framework UI chính
+pandas>=2.0.0              # Xử lý bảng dữ liệu
+
+streamlit>=1.30.0
+pandas>=2.0.0
+python-dotenv>=1.0.0
+PyMuPDF>=1.23.0
+requests>=2.31.0
+openpyxl>=3.1.2
