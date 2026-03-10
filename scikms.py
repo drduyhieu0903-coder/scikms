@@ -2211,6 +2211,9 @@ with st.sidebar:
             <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#94a3b8; letter-spacing:0.12em; margin-top:6px">
                 SCIENTIFIC KNOWLEDGE MANAGEMENT
             </div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#94a3b8; letter-spacing:0.05em; margin-top:6px">
+                Created by Dr. Hieuduy
+            </div>
         </div>
     """, unsafe_allow_html=True)
 
