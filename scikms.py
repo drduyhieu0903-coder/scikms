@@ -3623,8 +3623,20 @@ def tab_rename():
     with col_c:
         if st.button("📂 Open Storage Folder", use_container_width=True):
             try:
-                os.startfile(STORAGE_DIR)
-                st.success("Opened storage folder!")
+                if hasattr(os, "startfile"): # Windows
+                    os.startfile(STORAGE_DIR)
+                    st.success("Opened storage folder!")
+                else: # macOS / Linux (Streamlit Cloud)
+                    import subprocess
+                    import sys
+                    if sys.platform == "darwin":
+                        subprocess.call(["open", str(STORAGE_DIR)])
+                        st.success("Opened storage folder (macOS)!")
+                    elif sys.platform.startswith("linux"):
+                        # on streamlit cloud, opening a folder UI is not possible.
+                        st.info(f"Storage folder path: {os.path.abspath(STORAGE_DIR)} (File explorer UI not available on cloud)")
+                    else:
+                        st.warning("Automatic folder opening is not supported on this OS.")
             except Exception as e:
                 st.error(f"Could not open folder: {e}")
 
