@@ -1406,7 +1406,7 @@ def extract_pdf_text_and_meta(pdf_bytes: bytes) -> dict:
             # Get original text (to preserve case)
             raw_abs = first_2000[abs_start:abs_end]
             # Remove "Abstract" at the beginning
-            raw_abs = re.sub(r'^(?i)(abstract|abstract)[\s:\.\n]*', '', raw_abs).strip()
+            raw_abs = re.sub(r'(?i)^(abstract|abstract)[\s:\.\n]*', '', raw_abs).strip()
             # Clean whitespaces
             abstract = re.sub(r'\s{2,}', ' ', raw_abs.replace("\n", " "))
             
@@ -3619,6 +3619,14 @@ def tab_rename():
                 
             st.success(f"✅ Successfully renamed {success_count} files on disk and in library!")
             st.rerun()
+
+    with col_c:
+        if st.button("📂 Open Storage Folder", use_container_width=True):
+            try:
+                os.startfile(STORAGE_DIR)
+                st.success("Opened storage folder!")
+            except Exception as e:
+                st.error(f"Could not open folder: {e}")
 
     with col_b:
         if st.button("🔄 Rescan All Metadata", type="primary", use_container_width=True):
